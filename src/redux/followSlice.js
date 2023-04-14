@@ -18,6 +18,9 @@ const myValueSlice = createSlice({
     unfollow(state, action) {
       state.value -= action.payload;
     },
+    update(state, action) {
+      state.value = action.payload;
+    },
   },
 });
 
@@ -26,4 +29,4 @@ export const persistedReducer = persistReducer(
   myValueSlice.reducer
 );
 
-export const { follow, unfollow } = myValueSlice.actions;
+export const { follow, unfollow, update } = myValueSlice.actions;

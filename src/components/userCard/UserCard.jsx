@@ -1,13 +1,23 @@
 // import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { follow, unfollow } from '../../redux/followSlice';
+import { follow, unfollow, update } from '../../redux/followSlice';
 
 import goitLogo from '../../images/goitLogo.svg';
-import boy from '../../images/Boy.svg';
+// import boy from '../../images/Boy.svg';
+import { useEffect } from 'react';
 
-export const UserCard = () => {
+export const UserCard = item => {
   const dispatch = useDispatch();
   const value = useSelector(state => state.myValue.value);
+
+  // console.log(item.followers);
+  useEffect(() => {
+    dispatch(update(item.followers));
+
+    return () => {};
+  }, [dispatch, item.followers]);
+
+  // console.log(id);
 
   // const [count, setCount] = useState(100500);
   // let number = Number(value.a).toLocaleString('en');
@@ -25,10 +35,10 @@ export const UserCard = () => {
       <div className="userImageBox">
         <div className="horizontalLine"></div>
 
-        <img src={boy} className="userImage" alt="user img" />
+        <img src={item.avatar} className="userImage" alt="user img" />
       </div>
       <div className="cardInfo">
-        <p className="cardInfoTweets">777 tweets</p>
+        <p className="cardInfoTweets">{item.tweets} tweets</p>
         <div className="cardInfoTweets cardInfoFollowers">
           {value} followers
         </div>
