@@ -1,17 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+import { persistedReducer } from './followSlice';
 
-const myValueSlice = createSlice({
-  name: 'myValue',
-  initialState: 100500,
-  reducers: {
-    increment(state, action) {
-      return state + action.payload;
-    },
-  },
-});
-
-export const { increment } = myValueSlice.actions;
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
 // export const increment = createAction('counter/increment');
 // export const decrement = createAction('counter/decrement');
@@ -23,6 +21,14 @@ export const { increment } = myValueSlice.actions;
 
 export const store = configureStore({
   reducer: {
-    myValue: myValueSlice.reducer,
+    myValue: persistedReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
+
+export const persistor = persistStore(store);
