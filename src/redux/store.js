@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const myValueSlice = createSlice({
   name: 'myValue',
