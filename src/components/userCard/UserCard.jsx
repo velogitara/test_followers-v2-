@@ -8,10 +8,9 @@ import boy from '../../images/Boy.svg';
 export const UserCard = () => {
   const dispatch = useDispatch();
   const value = useSelector(state => state.myValue);
-  console.log('first');
 
   // const [count, setCount] = useState(100500);
-  // let number = Number(count).toLocaleString('en');
+  let number = Number(value).toLocaleString('en');
   return (
     <div className="card">
       <a
@@ -30,7 +29,7 @@ export const UserCard = () => {
       </div>
       <div className="cardInfo">
         <p className="cardInfoTweets">777 tweets</p>
-        <p className="cardInfoTweets cardInfoFollowers">{value} followers</p>
+        <p className="cardInfoTweets cardInfoFollowers">{number} followers</p>
         <button
           className="followBtn"
           alt="follow user button"
