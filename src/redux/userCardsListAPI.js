@@ -13,8 +13,6 @@ export const userCardsApi = createApi({
       providesTags: ['userCards'],
     }),
 
-    // invalidatesTags: ['userCards'],
-
     updateField: builder.mutation({
       query: ({ id, follow, followers }) => ({
         url: `/${id}`,

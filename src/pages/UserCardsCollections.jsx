@@ -1,12 +1,10 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
-import './UserCardsCollections.css';
+import { Ul } from './UserCardsCollections.styled';
 import { BeatLoader } from 'react-spinners';
 
 const UserCardsCollections = () => {
-  // const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
   const { data, isFetching } = useGetUsersQuery({ limit });
   let newData = [];
@@ -21,12 +19,12 @@ const UserCardsCollections = () => {
   return (
     <div>
       <h2>Users List</h2>
-      <ul className="list">
+      <Ul>
         {newData.length &&
           newData.map(i => {
             return <UserCard key={i.id} {...i} />;
           })}
-      </ul>
+      </Ul>
       {!a && (
         <button className="loadMoreButton" onClick={loadMoreHandler}>
           Load more
