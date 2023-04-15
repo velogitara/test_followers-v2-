@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/test_followers-v2-/static/css/main.bce72703.css",
-    "main.js": "/test_followers-v2-/static/js/main.4d5e7309.js",
+    "main.css": "/test_followers-v2-/static/css/main.bdfb4d7a.css",
+    "main.js": "/test_followers-v2-/static/js/main.753a6056.js",
     "static/media/picture2in1.svg": "/test_followers-v2-/static/media/picture2in1.23dcbc3cc8ccc9682f24.svg",
     "static/media/goitLogo.svg": "/test_followers-v2-/static/media/goitLogo.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/test_followers-v2-/index.html",
-    "main.bce72703.css.map": "/test_followers-v2-/static/css/main.bce72703.css.map",
-    "main.4d5e7309.js.map": "/test_followers-v2-/static/js/main.4d5e7309.js.map"
+    "main.bdfb4d7a.css.map": "/test_followers-v2-/static/css/main.bdfb4d7a.css.map",
+    "main.753a6056.js.map": "/test_followers-v2-/static/js/main.753a6056.js.map"
   },
   "entrypoints": [
-    "static/css/main.bce72703.css",
-    "static/js/main.4d5e7309.js"
+    "static/css/main.bdfb4d7a.css",
+    "static/js/main.753a6056.js"
   ]
 }
