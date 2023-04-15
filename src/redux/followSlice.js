@@ -10,7 +10,7 @@ const persistConfig = {
 
 const myValueSlice = createSlice({
   name: 'myValue',
-  initialState: { value: 100500 },
+  initialState: { value: 100500, follow: false },
   reducers: {
     follow(state, action) {
       state.value += action.payload;

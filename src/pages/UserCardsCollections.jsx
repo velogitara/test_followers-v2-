@@ -1,40 +1,38 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
+import './UserCardsCollections.css';
+import { BeatLoader } from 'react-spinners';
 
 const UserCardsCollections = () => {
-  useEffect(() => {}, []);
-  const { data } = useGetUsersQuery();
-  // const { data, isFetching } = useGetUsersQuery();
-
-  // console.log(data);
-  // console.log(isFetching);
-
+  // const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(8);
+  const { data, isFetching } = useGetUsersQuery({ limit });
   let newData = [];
-
   if (data) {
     newData = data;
   }
+  let a = limit > newData.length;
+  const loadMoreHandler = async () => {
+    await setLimit(limit + 8);
+  };
+
   return (
     <div>
       <h2>Users List</h2>
-      <ul>
-        {newData.length ? (
+      <ul className="list">
+        {newData.length &&
           newData.map(i => {
             return <UserCard key={i.id} {...i} />;
-          })
-        ) : (
-          <div>some Error</div>
-        )}
+          })}
       </ul>
-      {/* {['user-1', 'user-2', 'user-3', 'user-4', 'user-5', 'user-6'].map(user => {
-        return (
-          <Link key={user} to={`${user}`}>
-            {user}
-          </Link>
-        );
-      })} */}
+      {!a && (
+        <button className="loadMoreButton" onClick={loadMoreHandler}>
+          Load more
+        </button>
+      )}
+      {isFetching && <BeatLoader color="#36d7b7" />}
     </div>
   );
 };

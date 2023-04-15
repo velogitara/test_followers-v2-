@@ -1,28 +1,36 @@
-// import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { follow, unfollow, update } from '../../redux/followSlice';
+import { useState } from 'react';
+import { useUpdateFieldMutation } from 'redux/userCardsListAPI';
 
 import goitLogo from '../../images/goitLogo.svg';
-// import boy from '../../images/Boy.svg';
-import { useEffect } from 'react';
 
 export const UserCard = item => {
-  const dispatch = useDispatch();
-  const value = useSelector(state => state.myValue.value);
+  const [follow, setFollow] = useState(item?.follow);
 
-  // console.log(item.followers);
-  useEffect(() => {
-    dispatch(update(item.followers));
+  const [updateFollowers, setUpdateFollowers] = useState(item?.followers);
 
-    return () => {};
-  }, [dispatch, item.followers]);
+  const [updateField] = useUpdateFieldMutation();
 
-  // console.log(id);
+  const handlerFollow = async () => {
+    const somethingGood = !item.follow
+      ? updateFollowers + 1
+      : updateFollowers - 1;
+    await setUpdateFollowers(somethingGood);
+    console.log(updateFollowers);
+    await updateField({
+      id: item.id,
+      follow: !follow,
+      followers: somethingGood,
+    }).then(response => {
+      if (response.data) {
+        setFollow(response.data.follow);
+      }
+    });
+  };
 
-  // const [count, setCount] = useState(100500);
-  // let number = Number(value.a).toLocaleString('en');
+  let number = Number(updateFollowers).toLocaleString('en');
+
   return (
-    <div className="card">
+    <li className="card">
       <a
         href="https://goit.global/ua/"
         target="_blank"
@@ -40,24 +48,17 @@ export const UserCard = item => {
       <div className="cardInfo">
         <p className="cardInfoTweets">{item.tweets} tweets</p>
         <div className="cardInfoTweets cardInfoFollowers">
-          {value} followers
+          {number} followers
         </div>
+
         <button
           className="followBtn"
           alt="follow user button"
-          onClick={() => dispatch(follow(1))}
-          // onClick={() => setCount(count => count + 1)}
+          onClick={handlerFollow}
         >
-          Follow
-        </button>
-        <button
-          className="followBtn"
-          alt="follow user button"
-          onClick={() => dispatch(unfollow(1))}
-        >
-          Following
+          {!follow ? 'Follow' : 'Following'}
         </button>
       </div>
-    </div>
+    </li>
   );
 };
