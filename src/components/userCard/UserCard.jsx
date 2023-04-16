@@ -1,14 +1,30 @@
 import { useState } from 'react';
 import { useUpdateFieldMutation } from 'redux/userCardsListAPI';
-
+import {
+  Item,
+  LogoLink,
+  Logo,
+  UserImageBox,
+  UserImage,
+  HorizontalLine,
+  CardInfo,
+  CardInfoTweets,
+  CardInfoFollowers,
+  FollowBtn,
+} from './UserCard.styled';
 import goitLogoCard from '../../images/goitLogoCard.svg';
 
 export const UserCard = item => {
   const [follow, setFollow] = useState(item?.follow);
-
   const [updateFollowers, setUpdateFollowers] = useState(item?.followers);
+  const [updateField, { isLoading }] = useUpdateFieldMutation();
 
-  const [updateField] = useUpdateFieldMutation();
+  const styleBlue = {
+    background: '#ebd8ff',
+  };
+  const styleGreen = {
+    background: '#5CD3A8',
+  };
 
   const handlerFollow = async () => {
     const somethingGood = !item.follow
@@ -29,35 +45,29 @@ export const UserCard = item => {
   let number = Number(updateFollowers).toLocaleString('en');
 
   return (
-    <li className="card">
-      <a
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noreferrer"
-        className="logoLink"
-      >
-        <img src={goitLogoCard} className="logo" alt="GoIt logo" />
-      </a>
+    <Item>
+      <LogoLink href="https://goit.global/ua/" target="_blank" rel="noreferrer">
+        <Logo src={goitLogoCard} alt="GoIt logo" />
+      </LogoLink>
 
-      <div className="userImageBox">
-        <div className="horizontalLine"></div>
+      <UserImageBox>
+        <HorizontalLine />
 
-        <img src={item.avatar} className="userImage" alt="user img" />
-      </div>
-      <div className="cardInfo">
-        <p className="cardInfoTweets">{item.tweets} tweets</p>
-        <div className="cardInfoTweets cardInfoFollowers">
-          {number} followers
-        </div>
+        <UserImage src={item.avatar} alt="user img" />
+      </UserImageBox>
+      <CardInfo>
+        <CardInfoTweets>{item.tweets} tweets</CardInfoTweets>
+        <CardInfoFollowers>{number} followers</CardInfoFollowers>
 
-        <button
-          className="followBtn"
+        <FollowBtn
           alt="follow user button"
           onClick={handlerFollow}
+          disabled={isLoading}
+          style={follow ? styleGreen : styleBlue}
         >
           {!follow ? 'Follow' : 'Following'}
-        </button>
-      </div>
-    </li>
+        </FollowBtn>
+      </CardInfo>
+    </Item>
   );
 };

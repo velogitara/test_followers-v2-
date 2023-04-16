@@ -19,13 +19,16 @@ export const BtnLink = styled(Link)`
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 500;
   font-family: inherit;
   background-color: white;
   cursor: pointer;
   transition: border-color 0.25s;
   outline: none;
+  :hover {
+    border-color: #646cff;
+  }
 `;
 
 export const Button = styled.button`
@@ -37,7 +40,9 @@ export const Button = styled.button`
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  color: #646cff;
+
+  font-size: 1.2em;
   font-weight: 500;
   font-family: inherit;
   background-color: white;
@@ -54,4 +59,13 @@ export const Loader = styled(CircleLoader)`
   transform: translate(-50%, 0);
 `;
 
-/* <CircleLoader color="#36d7b7" size={100} speedMultiplier={1} />; */
+export const NoMoreCards = styled.p`
+  margin-bottom: 16px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+
+  text-align: center;
+  color: 360°, 89%, 48%;
+`;

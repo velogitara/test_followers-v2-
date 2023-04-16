@@ -7,18 +7,19 @@ import {
   Div,
   Loader,
   Button,
+  NoMoreCards,
 } from './UserCardsCollections.styled';
 
 const UserCardsCollections = () => {
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(8);
   const { data, isFetching } = useGetUsersQuery({ limit });
   let newData = [];
   if (data) {
     newData = data;
   }
-  let a = limit > newData.length;
+  const totalPages = limit > newData.length;
   const loadMoreHandler = async () => {
-    await setLimit(limit + 5);
+    await setLimit(limit + 8);
   };
 
   return (
@@ -31,12 +32,8 @@ const UserCardsCollections = () => {
             return <UserCard key={i.id} {...i} />;
           })}
       </Ul>
-      {!a && (
-        <Button className="loadMoreButton" onClick={loadMoreHandler}>
-          Load more
-        </Button>
-      )}
-      {/* <Loader color="#04003d" size={100} speedMultiplier={1} /> */}
+      {!totalPages && <Button onClick={loadMoreHandler}>Load more</Button>}
+      {totalPages && <NoMoreCards>No more cards....sorry</NoMoreCards>}
       {isFetching && <Loader color="#10ff08" size={100} speedMultiplier={1} />}
     </Div>
   );
