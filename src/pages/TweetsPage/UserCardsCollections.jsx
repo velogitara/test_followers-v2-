@@ -10,7 +10,7 @@ import {
 } from './UserCardsCollections.styled';
 
 const UserCardsCollections = () => {
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(5);
   const { data, isFetching } = useGetUsersQuery({ limit });
   let newData = [];
   if (data) {
@@ -18,7 +18,7 @@ const UserCardsCollections = () => {
   }
   let a = limit > newData.length;
   const loadMoreHandler = async () => {
-    await setLimit(limit + 8);
+    await setLimit(limit + 5);
   };
 
   return (

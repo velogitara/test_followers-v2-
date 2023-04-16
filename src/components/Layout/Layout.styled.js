@@ -78,11 +78,5 @@ export const Main = styled.main`
 export const ContainerMain = styled(Container)`
   margin-top: auto;
   /* background-image: linear-gradient(180deg, #52acff 25%, #ffe32c 100%); */
-  background-color: #6f84e6;
-  background-image: linear-gradient(
-    90deg,
-    #6f84e6 0%,
-    #c97bc1 46%,
-    #ffcc70 100%
-  );
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 `;

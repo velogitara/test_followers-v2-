@@ -31,7 +31,7 @@ export const BtnLink = styled(Link)`
 export const Button = styled.button`
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, 0); */
+  transform: translate(-50%, 0);
   display: inline-block;
   margin: 20px 0 50px 50%;
   border-radius: 8px;
