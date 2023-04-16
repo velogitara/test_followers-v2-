@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/test_followers-v2-/static/css/main.bdfb4d7a.css",
-    "main.js": "/test_followers-v2-/static/js/main.753a6056.js",
+    "main.css": "/test_followers-v2-/static/css/main.6a1309bd.css",
+    "main.js": "/test_followers-v2-/static/js/main.2c7ae2dc.js",
     "static/media/picture2in1.svg": "/test_followers-v2-/static/media/picture2in1.23dcbc3cc8ccc9682f24.svg",
-    "static/media/goitLogo.svg": "/test_followers-v2-/static/media/goitLogo.e917114d7945c04c85a8946a331d28b6.svg",
+    "static/media/goitLogo.svg": "/test_followers-v2-/static/media/goitLogo.04a133f8e9f98e52e2294502e0dede3b.svg",
+    "static/media/goitLogoCard.svg": "/test_followers-v2-/static/media/goitLogoCard.805838b8d6c32c47ed1ed4dd5d895d95.svg",
     "index.html": "/test_followers-v2-/index.html",
-    "main.bdfb4d7a.css.map": "/test_followers-v2-/static/css/main.bdfb4d7a.css.map",
-    "main.753a6056.js.map": "/test_followers-v2-/static/js/main.753a6056.js.map"
+    "main.6a1309bd.css.map": "/test_followers-v2-/static/css/main.6a1309bd.css.map",
+    "main.2c7ae2dc.js.map": "/test_followers-v2-/static/js/main.2c7ae2dc.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdfb4d7a.css",
-    "static/js/main.753a6056.js"
+    "static/css/main.6a1309bd.css",
+    "static/js/main.2c7ae2dc.js"
   ]
 }
