@@ -33,7 +33,6 @@ const UserCardsCollections = () => {
           })}
       </Ul>
       {!totalPages && <Button onClick={loadMoreHandler}>Load more</Button>}
-      {totalPages && <NoMoreCards>No more cards....sorry</NoMoreCards>}
       {isFetching && <Loader color="#10ff08" size={100} speedMultiplier={1} />}
     </Div>
   );
