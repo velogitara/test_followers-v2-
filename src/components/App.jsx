@@ -1,11 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home';
-import UserCardsCollections from '../pages/UserCardsCollections';
+import Home from '../pages/HomePage/Home';
+import UserCardsCollections from '../pages/TweetsPage/UserCardsCollections';
 import { UserCard } from './userCard/UserCard';
 import './userCard/UserCard.css';
 import { Layout } from './Layout/Layout';
-
-import './App.css';
 
 export const App = () => {
   return (

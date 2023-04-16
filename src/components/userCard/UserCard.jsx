@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useUpdateFieldMutation } from 'redux/userCardsListAPI';
 
-import goitLogo from '../../images/goitLogo.svg';
+import goitLogoCard from '../../images/goitLogoCard.svg';
 
 export const UserCard = item => {
   const [follow, setFollow] = useState(item?.follow);
@@ -36,7 +36,7 @@ export const UserCard = item => {
         rel="noreferrer"
         className="logoLink"
       >
-        <img src={goitLogo} className="logo" alt="GoIt logo" />
+        <img src={goitLogoCard} className="logo" alt="GoIt logo" />
       </a>
 
       <div className="userImageBox">

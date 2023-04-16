@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
-import { Ul } from './UserCardsCollections.styled';
-import { BeatLoader } from 'react-spinners';
+import {
+  Ul,
+  BtnLink,
+  Div,
+  Loader,
+  Button,
+} from './UserCardsCollections.styled';
 
 const UserCardsCollections = () => {
   const [limit, setLimit] = useState(8);
@@ -17,8 +22,9 @@ const UserCardsCollections = () => {
   };
 
   return (
-    <div>
-      <h2>Users List</h2>
+    <Div>
+      <h2 style={{ visibility: 'hidden', display: 'none' }}>Users List</h2>
+      <BtnLink to="/">Back home</BtnLink>
       <Ul>
         {newData.length &&
           newData.map(i => {
@@ -26,12 +32,13 @@ const UserCardsCollections = () => {
           })}
       </Ul>
       {!a && (
-        <button className="loadMoreButton" onClick={loadMoreHandler}>
+        <Button className="loadMoreButton" onClick={loadMoreHandler}>
           Load more
-        </button>
+        </Button>
       )}
-      {isFetching && <BeatLoader color="#36d7b7" />}
-    </div>
+      {/* <Loader color="#04003d" size={100} speedMultiplier={1} /> */}
+      {isFetching && <Loader color="#10ff08" size={100} speedMultiplier={1} />}
+    </Div>
   );
 };
 export default UserCardsCollections;
