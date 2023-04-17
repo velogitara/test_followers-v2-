@@ -59,13 +59,13 @@ export const Loader = styled(CircleLoader)`
   transform: translate(-50%, 0);
 `;
 
-export const NoMoreCards = styled.p`
-  margin-bottom: 16px;
+// export const NoMoreCards = styled.p`
+//   margin-bottom: 16px;
 
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
+//   font-weight: 500;
+//   font-size: 20px;
+//   line-height: 1.2;
 
-  text-align: center;
-  color: 360°, 89%, 48%;
-`;
+//   text-align: center;
+//   color: 360°, 89%, 48%;
+// `;

@@ -7,7 +7,6 @@ import {
   Div,
   Loader,
   Button,
-  NoMoreCards,
 } from './UserCardsCollections.styled';
 
 const UserCardsCollections = () => {
