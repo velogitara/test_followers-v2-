@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
 import {
@@ -11,50 +12,31 @@ import {
   // NoMoreCards,
 } from './UserCardsCollections.styled';
 import BasicMenu from 'components/DropDownMenu/DropDownMenu';
-import { useSelector } from 'react-redux';
+import { resetLimit } from 'redux/followSlice';
 
 const UserCardsCollections = () => {
   const filterState = useSelector(state => state.filterValue.follow);
-  // const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(8);
+  const limit = useSelector(state => state.filterValue.limit);
+  // const [limit, setLimit] = useState(8);
   const { data, isFetching } = useGetUsersQuery({ limit });
-  // const [newData, setNewData] = useState([]);
+  const dispatch = useDispatch();
 
   let newData = [];
-
-  // useEffect(() => {
-  //   if (!data?.length) {
-  //     return;
-  //   }
-
-  //   setNewData([...newData, ...data]);
-
-  //   // return () => {};
-  // }, [data]);
-
-  // console.log(newData);
-  // newData = [...newData, ...data];
-
-  // setNewData([...newData, ...data]);
 
   if (!data?.length) {
     return;
   }
 
-  newData = data;
+  newData = [...newData, ...data];
 
   const totalPages = limit > newData.length;
 
   const loadMoreHandler = async () => {
-    await setLimit(limit + 8);
-    // await setPage(page => page + 1);
+    // await setLimit(limit + 8);
+    await dispatch(resetLimit(limit + 8));
   };
 
   const filteredData = newData.filter(({ follow }) => follow === filterState);
-
-  console.log(filterState);
-
-  // console.log(filteredData);
 
   return (
     <Div>

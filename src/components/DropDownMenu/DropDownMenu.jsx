@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Btn } from './DropDownMenu.styled';
-import { update } from 'redux/followSlice';
+import { update, resetLimit } from 'redux/followSlice';
 import { useDispatch } from 'react-redux';
 
 export default function BasicMenu() {
@@ -19,13 +19,17 @@ export default function BasicMenu() {
     switch (e.target.innerText) {
       case 'follow':
         await dispatch(update(false));
+        await dispatch(resetLimit(8));
         break;
       case 'followings':
         await dispatch(update(true));
+        await dispatch(resetLimit(8));
 
         break;
       case 'show all':
         await dispatch(update('show all'));
+        await dispatch(resetLimit(8));
+
         break;
       default:
         break;

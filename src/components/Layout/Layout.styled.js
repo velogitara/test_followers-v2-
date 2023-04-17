@@ -10,7 +10,6 @@ export const Header = styled.header`
   height: 100px;
 
   background-color: #ffffff;
-  /* background-image: linear-gradient(180deg, #52acff 25%, #ffe32c 100%); */
   background: hsla(217, 100%, 50%, 1);
 
   background: linear-gradient(
@@ -89,7 +88,6 @@ export const Main = styled.main`
 `;
 export const ContainerMain = styled(Container)`
   margin-top: auto;
-  /* background-image: linear-gradient(180deg, #52acff 25%, #ffe32c 100%); */
   background-image: linear-gradient(
     to top,
     #fff1eb 0%,

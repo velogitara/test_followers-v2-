@@ -10,10 +10,16 @@ const persistConfig = {
 
 const myValueSlice = createSlice({
   name: 'filterValue',
-  initialState: { follow: 'show all' },
+  initialState: {
+    follow: 'show all',
+    limit: 8,
+  },
   reducers: {
     update(state, action) {
       state.follow = action.payload;
+    },
+    resetLimit(state, action) {
+      state.limit = action.payload;
     },
   },
 });
@@ -23,4 +29,4 @@ export const persistedReducer = persistReducer(
   myValueSlice.reducer
 );
 
-export const { update } = myValueSlice.actions;
+export const { update, resetLimit } = myValueSlice.actions;
