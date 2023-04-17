@@ -4,6 +4,10 @@
   "private": true,
   "homepage": "https://velogitara.github.io/test_followers-v2-/",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/material": "^5.12.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -15,7 +19,6 @@
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.9",
     "web-vitals": "^2.1.3"
   },
   "scripts": {

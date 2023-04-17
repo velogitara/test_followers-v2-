@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { CircleLoader } from 'react-spinners';
 
@@ -18,7 +18,7 @@ export const BtnLink = styled(Link)`
   margin: 20px 0;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 10px 20px;
   font-size: 1.2em;
   font-weight: 500;
   font-family: inherit;
@@ -39,7 +39,7 @@ export const Button = styled.button`
   margin: 20px 0 50px 50%;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 10px 20px;
   color: #646cff;
 
   font-size: 1.2em;
@@ -57,6 +57,11 @@ export const Loader = styled(CircleLoader)`
 
   color: #6f84e6;
   transform: translate(-50%, 0);
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 // export const NoMoreCards = styled.p`

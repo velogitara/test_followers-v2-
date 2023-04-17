@@ -14,7 +14,7 @@ import {
 
 export const store = configureStore({
   reducer: {
-    myValue: persistedReducer,
+    filterValue: persistedReducer,
     [userCardsApi.reducerPath]: userCardsApi.reducer,
   },
   middleware: getDefaultMiddleware => [

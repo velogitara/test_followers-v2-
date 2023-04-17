@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import img from '../../images/picture2in1.svg';
 
 export const Item = styled.li`
