@@ -64,13 +64,14 @@ export const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-// export const NoMoreCards = styled.p`
-//   margin-bottom: 16px;
+export const NoMoreCards = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
 
-//   font-weight: 500;
-//   font-size: 20px;
-//   line-height: 1.2;
-
-//   text-align: center;
-//   color: 360°, 89%, 48%;
-// `;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #6f84e6;
+`;

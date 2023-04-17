@@ -8,41 +8,51 @@ import {
   Loader,
   Button,
   ButtonContainer,
+  // NoMoreCards,
 } from './UserCardsCollections.styled';
 import BasicMenu from 'components/DropDownMenu/DropDownMenu';
 import { useSelector } from 'react-redux';
 
 const UserCardsCollections = () => {
   const filterState = useSelector(state => state.filterValue.follow);
-
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
-  const { data, isFetching } = useGetUsersQuery({ page, limit });
+  const { data, isFetching } = useGetUsersQuery({ limit });
+  // const [newData, setNewData] = useState([]);
 
-  // const [newData, setNewData] = useState([...data]);
   let newData = [];
-  // console.log(data);
+
+  // useEffect(() => {
+  //   if (!data?.length) {
+  //     return;
+  //   }
+
+  //   setNewData([...newData, ...data]);
+
+  //   // return () => {};
+  // }, [data]);
 
   // console.log(newData);
+  // newData = [...newData, ...data];
 
-  if (data) {
-    newData = data;
-    // console.log(data);
-    // console.log(newData);
+  // setNewData([...newData, ...data]);
+
+  if (!data?.length) {
+    return;
   }
-  const totalPages = limit > newData.length;
-  const loadMoreHandler = async () => {
-    // console.log(data);
-    // console.log(newData);
-    // await setNewData([...newData, ...data]);
 
+  newData = data;
+
+  const totalPages = limit > newData.length;
+
+  const loadMoreHandler = async () => {
     await setLimit(limit + 8);
-    // await setPage(page + 1);
+    // await setPage(page => page + 1);
   };
 
   const filteredData = newData.filter(({ follow }) => follow === filterState);
 
-  // console.log(filterState);
+  console.log(filterState);
 
   // console.log(filteredData);
 
@@ -56,6 +66,7 @@ const UserCardsCollections = () => {
 
       {filteredData.length > 0 && (
         <Ul>
+          {/* <NoMoreCards>Filter option: filterState</NoMoreCards> */}
           {filteredData.map(i => {
             return <UserCard key={i.id} {...i} />;
           })}

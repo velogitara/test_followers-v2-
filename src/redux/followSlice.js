@@ -13,7 +13,6 @@ const myValueSlice = createSlice({
   initialState: { follow: 'show all' },
   reducers: {
     update(state, action) {
-      console.log(action);
       state.follow = action.payload;
     },
   },

@@ -9,8 +9,16 @@ export const Header = styled.header`
   width: 100%;
   height: 100px;
 
-  background-color: #52acff;
-  background-image: linear-gradient(180deg, #52acff 25%, #ffe32c 100%);
+  background-color: #ffffff;
+  /* background-image: linear-gradient(180deg, #52acff 25%, #ffe32c 100%); */
+  background: hsla(217, 100%, 50%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
 `;
 
 export const Container = styled.div`
@@ -42,7 +50,11 @@ export const StyledLink = styled(NavLink)`
 
   text-transform: uppercase;
 
-  color: #373737;
+  color: #fff;
+
+  :hover {
+    color: rgba(255, 227, 44, 0.8);
+  }
 `;
 
 export const Nav = styled.nav`
@@ -65,7 +77,7 @@ export const Img = styled.img`
   transition: filter 300ms;
 
   :hover {
-    filter: drop-shadow(0 0 4em #fdfdfdc5);
+    filter: drop-shadow(0 0 5em #ffe32c);
   }
 `;
 // =================== Main =================================================

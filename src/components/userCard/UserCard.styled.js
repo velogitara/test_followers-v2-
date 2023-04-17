@@ -49,6 +49,7 @@ export const UserImage = styled.img`
   left: 50%;
   transform: translate(-50%, -50%);
   margin-bottom: 16px;
+  border: 8px solid #ebd8ff;
 `;
 export const HorizontalLine = styled.div`
   position: absolute;
