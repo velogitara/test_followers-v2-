@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+// import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
@@ -18,8 +18,21 @@ const UserCardsCollections = () => {
   const filterState = useSelector(state => state.filterValue.follow);
   const limit = useSelector(state => state.filterValue.limit);
   // const [limit, setLimit] = useState(8);
-  const { data, isFetching } = useGetUsersQuery({ limit });
+  // const [page, setPage] = useState(1);
+
+  const { data, isFetching } = useGetUsersQuery({ limit, follow: filterState });
   const dispatch = useDispatch();
+  console.log(filterState);
+  // const refData = useRef([]);
+
+  // useEffect(() => {
+  //   if (!data?.length) {
+  //     return;
+  //   }
+  //   refData.current = [...refData.current, ...data];
+  //   console.log('useEffect', refData.current);
+  // }, [data]);
+  // console.log('After useEffect', refData.current);
 
   let newData = [];
 
@@ -32,7 +45,9 @@ const UserCardsCollections = () => {
   const totalPages = limit > newData.length;
 
   const loadMoreHandler = async () => {
+    // setPage(page + 1);
     // await setLimit(limit + 8);
+
     await dispatch(resetLimit(limit + 8));
   };
 

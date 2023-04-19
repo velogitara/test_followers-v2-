@@ -30,7 +30,7 @@ export const UserCard = item => {
     const somethingGood = !item.follow
       ? updateFollowers + 1
       : updateFollowers - 1;
-    await setUpdateFollowers(somethingGood);
+    setUpdateFollowers(somethingGood);
     await updateField({
       id: item.id,
       follow: !follow,

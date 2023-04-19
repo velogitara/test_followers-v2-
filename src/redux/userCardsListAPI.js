@@ -9,7 +9,10 @@ export const userCardsApi = createApi({
 
   endpoints: builder => ({
     getUsers: builder.query({
-      query: ({ page = 1, limit = 8 }) => `/?page=${page}&limit=${limit}`,
+      query: ({ page = 1, limit = 8, follow }) =>
+        `/?page=${page}&limit=${limit}${
+          typeof follow === 'boolean' ? `&follow=${follow}` : ''
+        }`,
       providesTags: ['userCards'],
     }),
 
