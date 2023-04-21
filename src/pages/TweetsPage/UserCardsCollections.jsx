@@ -9,10 +9,11 @@ import {
   Loader,
   Button,
   ButtonContainer,
+  NoMoreCards,
   // NoMoreCards,
 } from './UserCardsCollections.styled';
 import BasicMenu from 'components/DropDownMenu/DropDownMenu';
-import { resetLimit } from 'redux/followSlice';
+import { resetLimit, update } from 'redux/followSlice';
 
 const UserCardsCollections = () => {
   const filterState = useSelector(state => state.filterValue.follow);
@@ -20,9 +21,12 @@ const UserCardsCollections = () => {
   // const [limit, setLimit] = useState(8);
   // const [page, setPage] = useState(1);
 
-  const { data, isFetching } = useGetUsersQuery({ limit, follow: filterState });
+  const { data, isFetching, isLoading } = useGetUsersQuery({
+    limit,
+    follow: filterState,
+  });
   const dispatch = useDispatch();
-  console.log(filterState);
+  // console.log(filterState);
   // const refData = useRef([]);
 
   // useEffect(() => {
@@ -36,8 +40,22 @@ const UserCardsCollections = () => {
 
   let newData = [];
 
-  if (!data?.length) {
-    return;
+  if (!data?.length || isLoading) {
+    setTimeout(() => {
+      dispatch(update('show all'));
+    }, 4000);
+    return (
+      <Div>
+        <h2 style={{ visibility: 'hidden', display: 'none' }}>Users List</h2>
+        <ButtonContainer>
+          <BtnLink to="/">Back home</BtnLink>
+          <BasicMenu />
+        </ButtonContainer>
+        <NoMoreCards>
+          <p>No mo cards here, your filter will be reset in 3 seconds...</p>
+        </NoMoreCards>
+      </Div>
+    );
   }
 
   newData = [...newData, ...data];
@@ -51,7 +69,7 @@ const UserCardsCollections = () => {
     await dispatch(resetLimit(limit + 8));
   };
 
-  const filteredData = newData.filter(({ follow }) => follow === filterState);
+  // const filteredData = newData.filter(({ follow }) => follow === filterState);
 
   return (
     <Div>
@@ -60,16 +78,15 @@ const UserCardsCollections = () => {
         <BtnLink to="/">Back home</BtnLink>
         <BasicMenu />
       </ButtonContainer>
-
-      {filteredData.length > 0 && (
+      {/* {filteredData.length > 0 && (
         <Ul>
-          {/* <NoMoreCards>Filter option: filterState</NoMoreCards> */}
           {filteredData.map(i => {
             return <UserCard key={i.id} {...i} />;
           })}
         </Ul>
-      )}
-      {filterState === 'show all' && (
+      )} */}
+
+      {newData.length && (
         <Ul>
           {newData.map(i => {
             return <UserCard key={i.id} {...i} />;
@@ -77,7 +94,6 @@ const UserCardsCollections = () => {
         </Ul>
       )}
       {isFetching && <Loader color="#10ff08" size={100} speedMultiplier={1} />}
-
       {!totalPages && <Button onClick={loadMoreHandler}>Load more</Button>}
     </Div>
   );
