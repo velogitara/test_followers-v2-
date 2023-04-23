@@ -53,6 +53,7 @@ export const Button = styled.button`
 
 export const Loader = styled(CircleLoader)`
   left: 50%;
+  margin-top: 100px;
   margin-bottom: 100px;
 
   color: #6f84e6;

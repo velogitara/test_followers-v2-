@@ -1,4 +1,3 @@
-// import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetUsersQuery } from 'redux/userCardsListAPI';
 import { UserCard } from 'components/userCard/UserCard';
@@ -26,21 +25,18 @@ const UserCardsCollections = () => {
     follow: filterState,
   });
   const dispatch = useDispatch();
-  // console.log(filterState);
-  // const refData = useRef([]);
-
-  // useEffect(() => {
-  //   if (!data?.length) {
-  //     return;
-  //   }
-  //   refData.current = [...refData.current, ...data];
-  //   console.log('useEffect', refData.current);
-  // }, [data]);
-  // console.log('After useEffect', refData.current);
 
   let newData = [];
 
-  if (!data?.length || isLoading) {
+  if (isLoading) {
+    return (
+      <Div>
+        <Loader color="#10ff08" size={100} speedMultiplier={1} />
+      </Div>
+    );
+  }
+
+  if (!data?.length) {
     setTimeout(() => {
       dispatch(update('show all'));
     }, 4000);
@@ -52,7 +48,7 @@ const UserCardsCollections = () => {
           <BasicMenu />
         </ButtonContainer>
         <NoMoreCards>
-          <p>No mo cards here, your filter will be reset in 3 seconds...</p>
+          <p>No cards here, your filter will be reset in 3 seconds...</p>
         </NoMoreCards>
       </Div>
     );
@@ -78,13 +74,6 @@ const UserCardsCollections = () => {
         <BtnLink to="/">Back home</BtnLink>
         <BasicMenu />
       </ButtonContainer>
-      {/* {filteredData.length > 0 && (
-        <Ul>
-          {filteredData.map(i => {
-            return <UserCard key={i.id} {...i} />;
-          })}
-        </Ul>
-      )} */}
 
       {newData.length && (
         <Ul>
