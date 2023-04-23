@@ -13,6 +13,7 @@ const myValueSlice = createSlice({
   initialState: {
     follow: 'show all',
     limit: 8,
+    content: [],
   },
   reducers: {
     update(state, action) {
@@ -20,6 +21,9 @@ const myValueSlice = createSlice({
     },
     resetLimit(state, action) {
       state.limit = action.payload;
+    },
+    addContent(state, action) {
+      state.content = state.content.concat(action.payload);
     },
   },
 });
@@ -29,4 +33,4 @@ export const persistedReducer = persistReducer(
   myValueSlice.reducer
 );
 
-export const { update, resetLimit } = myValueSlice.actions;
+export const { update, resetLimit, addContent } = myValueSlice.actions;

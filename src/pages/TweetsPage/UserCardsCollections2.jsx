@@ -12,12 +12,11 @@ import {
   // NoMoreCards,
 } from './UserCardsCollections.styled';
 import BasicMenu from 'components/DropDownMenu/DropDownMenu';
-import { resetLimit, update /*addContent*/ } from 'redux/followSlice';
+import { resetLimit, update } from 'redux/followSlice';
 
 const UserCardsCollections = () => {
   const filterState = useSelector(state => state.filterValue.follow);
   const limit = useSelector(state => state.filterValue.limit);
-  // const content = useSelector(state => state.content);
   // const [limit, setLimit] = useState(8);
   // const [page, setPage] = useState(1);
 
@@ -28,14 +27,6 @@ const UserCardsCollections = () => {
   const dispatch = useDispatch();
 
   let newData = [];
-
-  if (isLoading) {
-    return (
-      <Div>
-        <Loader color="#10ff08" size={100} speedMultiplier={1} />
-      </Div>
-    );
-  }
 
   if (!data?.length) {
     setTimeout(() => {
@@ -49,15 +40,11 @@ const UserCardsCollections = () => {
           <BasicMenu />
         </ButtonContainer>
         <NoMoreCards>
-          <p>No cards here, your filter will be reset in 3 seconds...</p>
+          <p>No mo cards here, your filter will be reset in 3 seconds...</p>
         </NoMoreCards>
       </Div>
     );
   }
-  // if (data?.length) {
-  //   dispatch(addContent(data));
-  //   console.log("did Dispatch")
-  // }
 
   newData = [...newData, ...data];
 
