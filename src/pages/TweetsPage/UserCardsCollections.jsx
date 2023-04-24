@@ -31,9 +31,11 @@ const UserCardsCollections = () => {
 
   if (isLoading) {
     return (
-      <Div>
-        <Loader color="#10ff08" size={100} speedMultiplier={1} />
-      </Div>
+      <div style={{ height: '100vh' }}>
+        <Div>
+          <Loader color="#10ff08" size={100} speedMultiplier={1} />
+        </Div>
+      </div>
     );
   }
 
@@ -42,16 +44,18 @@ const UserCardsCollections = () => {
       dispatch(update('show all'));
     }, 4000);
     return (
-      <Div>
-        <h2 style={{ visibility: 'hidden', display: 'none' }}>Users List</h2>
-        <ButtonContainer>
-          <BtnLink to="/">Back home</BtnLink>
-          <BasicMenu />
-        </ButtonContainer>
-        <NoMoreCards>
-          <p>No cards here, your filter will be reset in 3 seconds...</p>
-        </NoMoreCards>
-      </Div>
+      <div style={{ height: '100vh' }}>
+        <Div>
+          <h2 style={{ visibility: 'hidden', display: 'none' }}>Users List</h2>
+          <ButtonContainer>
+            <BtnLink to="/">Back home</BtnLink>
+            <BasicMenu />
+          </ButtonContainer>
+          <NoMoreCards>
+            <p>No cards here, your filter will be reset in 3 seconds...</p>
+          </NoMoreCards>
+        </Div>
+      </div>
     );
   }
   // if (data?.length) {
